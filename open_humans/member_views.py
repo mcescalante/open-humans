@@ -235,7 +235,7 @@ class MemberDataView(PrivateMixin, TemplateView):
               activities[a]['is_connected'])
              or a in grouped_files)}
         data_sources = sorted(
-            activities.keys(),
+            list(activities.keys()),
             key=lambda x: activities[x]['verbose_name'].lower())
 
         context.update({
@@ -261,7 +261,7 @@ class MemberConnectionsView(PrivateMixin, TemplateView):
             **kwargs)
 
         connections = [
-            item for item in self.request.user.member.connections.items()
+            item for item in list(self.request.user.member.connections.items())
             if apps.get_app_config(item[0]).disconnectable
         ]
 

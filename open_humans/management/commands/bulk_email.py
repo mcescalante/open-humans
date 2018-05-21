@@ -75,7 +75,7 @@ class Command(BaseCommand):
         email_data = []
         with open(email_file, 'rb') as f:
             csvreader = csv.reader(f)
-            headers = csvreader.next()
+            headers = next(csvreader)
             if 'email' not in headers:
                 raise ValueError(
                     "{} does not have 'email' as one of the header row "
@@ -100,7 +100,7 @@ class Command(BaseCommand):
 
             user = UserModel.objects.get(email=data['email'])
             context = {'user': user}
-            for item in data.keys():
+            for item in list(data.keys()):
                 context[item] = data[item]
             subject = render_to_string('{}.subject'.format(name), context,
                                        dirs=path).strip()

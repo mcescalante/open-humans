@@ -34,9 +34,9 @@ class Command(BaseCommand):
 
         for uid in sorted(drpms.keys()):
             if options['social']:
-                print('{},{},{}'.format(drpms[uid].project_member_id,
+                print(('{},{},{}'.format(drpms[uid].project_member_id,
                                         refresh_tokens[uid].token,
-                                        auth_refresh_tokens[uid]))
+                                        auth_refresh_tokens[uid])))
             else:
-                print('{},{}'.format(drpms[uid].project_member_id,
-                                     refresh_tokens[uid].token))
+                print(('{},{}'.format(drpms[uid].project_member_id,
+                                     refresh_tokens[uid].token)))

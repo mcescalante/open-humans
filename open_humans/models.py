@@ -160,7 +160,7 @@ class Member(models.Model):
     badges = JSONField(default=dict)
 
     def __unicode__(self):
-        return unicode(self.user)
+        return str(self.user)
 
     @property
     def primary_email(self):
@@ -214,7 +214,7 @@ class Member(models.Model):
                     'disconnectable': app_config.disconnectable,
                 }
 
-        return OrderedDict(sorted(connections.items(),
+        return OrderedDict(sorted(list(connections.items()),
                                   key=lambda x: x[1]['verbose_name']))
 
 
@@ -282,4 +282,4 @@ class GrantProject(models.Model):
     project_desc = models.TextField()
 
     def __unicode__(self):
-        return unicode(self.name)
+        return str(self.name)

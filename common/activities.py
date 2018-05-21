@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 
 import re
 
@@ -55,7 +55,7 @@ def get_labels(*args):
     """
     Convenience method to filter labels.
     """
-    return {name: value for name, value in LABELS.items() if name in args}
+    return {name: value for name, value in list(LABELS.items()) if name in args}
 
 
 def badge_counts_inner():
@@ -67,7 +67,7 @@ def badge_counts_inner():
     badges = chain.from_iterable(member['badges'] for member in members)
     counts = Counter(badge.get('label') for badge in badges)
 
-    return dict(counts.items())
+    return dict(list(counts.items()))
 
 
 def badge_counts():
@@ -172,7 +172,7 @@ def activity_from_data_request_project(project, user=None):
     except ValueError:
         pass
 
-    classes = activity['labels'].keys()
+    classes = list(activity['labels'].keys())
     if activity['is_connected']:
         classes.append('connected')
     activity['classes'] = ' '.join(classes)
@@ -247,7 +247,7 @@ def public_data_activity(user):
         'source_name': 'public_data_sharing',
     }
 
-    classes = activity['labels'].keys()
+    classes = list(activity['labels'].keys())
     if activity['is_connected']:
         classes.append('connected')
     activity['classes'] = ' '.join(classes)
@@ -265,7 +265,7 @@ def sort_activities(activities):
         """
         return -(value.get('members', 0) or 0)
 
-    return sorted(activities.values(), key=sort_order)
+    return sorted(list(activities.values()), key=sort_order)
 
 
 def personalize_activities(user=None, only_approved=True, only_active=True):

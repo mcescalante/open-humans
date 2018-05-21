@@ -183,7 +183,7 @@ class AuthorizationView(BaseOAuth2AuthorizationView):
 
             return 'primary'
 
-        zipped_scopes = zip(context['scopes'], context['scopes_descriptions'])
+        zipped_scopes = list(zip(context['scopes'], context['scopes_descriptions']))
         zipped_scopes.sort(key=scope_key)
 
         context['scopes'] = [(scope, description, scope_class(scope))
@@ -309,7 +309,7 @@ class AddDataPageView(NeverCacheMixin, SourcesContextMixin, TemplateView):
             returned_data_description='').filter(
             approved=True).filter(
             active=True)
-        print(projects.count())
+        print((projects.count()))
         activities = sort_activities(
             {proj.id_label: activity_from_data_request_project(
                 project=proj, user=self.request.user) for proj in projects})

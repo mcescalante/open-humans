@@ -48,10 +48,10 @@ class Command(BaseCommand):
             member__user__is_active=True).exclude(authorized=False).filter(
             created__lte=cutoff)
 
-        print("Members: {}".format(members.count()))
-        print("Members with any data connections: {}".format(
-            members_with_data.count()))
-        print("Data connections: {}".format(len(data_connections)))
-        print("Project connections: {}".format(proj_connections.count()))
-        print("Projects drafted: {}".format(projects_made.count()))
-        print("Projects approved: {}".format(projects_approved.count()))
+        print(("Members: {}".format(members.count())))
+        print(("Members with any data connections: {}".format(
+            members_with_data.count())))
+        print(("Data connections: {}".format(len(data_connections))))
+        print(("Project connections: {}".format(proj_connections.count())))
+        print(("Projects drafted: {}".format(projects_made.count())))
+        print(("Projects approved: {}".format(projects_approved.count())))

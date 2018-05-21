@@ -33,10 +33,10 @@ class UserDataTests(APITestCase):
         })
 
         self.verify_request('/user-data/', method='get', body={
-            u'data': {
-                u'userId': u'abc'
+            'data': {
+                'userId': 'abc'
             },
-            u'id': user_data_id
+            'id': user_data_id
         })
 
     def test_get_user_data_no_credentials(self):

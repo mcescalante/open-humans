@@ -1,9 +1,9 @@
 import os
 import unittest
 
-from cStringIO import StringIO
+from io import StringIO
 from datetime import datetime, timedelta
-from urllib import quote
+from urllib.parse import quote
 
 from django.conf import settings
 from django.contrib import auth

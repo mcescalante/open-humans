@@ -1,7 +1,7 @@
 import datetime
 import random
 import string
-import urlparse
+import urllib.parse
 
 from django.apps import apps
 from django.core.management.base import BaseCommand
@@ -174,7 +174,7 @@ class Command(BaseCommand):
                                                      source=source)
             user = project_member.member.user
 
-            print('Transferring {}...'.format(user.username))
+            print(('Transferring {}...'.format(user.username)))
 
             if uid in legacy_files_by_uid:
                 for df in legacy_files_by_uid[uid]:
@@ -189,7 +189,7 @@ class Command(BaseCommand):
                     df.save()
                     self._create_projdatafile(df, project_member)
 
-            print('Transferred {}'.format(user.username))
+            print(('Transferred {}'.format(user.username)))
 
     def _create_projmember(self, project, uid, source):
         member = Member.objects.get(user__id=uid)
@@ -267,7 +267,7 @@ class Command(BaseCommand):
             'redirect_uri': redirect_uri,
             'code': code,
         }
-        token_url = urlparse.urljoin(self.base_url, '/oauth2/token/')
+        token_url = urllib.parse.urljoin(self.base_url, '/oauth2/token/')
         requests.post(
             token_url, data=data,
             auth=requests.auth.HTTPBasicAuth(app.client_id, app.client_secret))

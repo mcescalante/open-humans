@@ -15,6 +15,7 @@ extending the "patch" and/or "post" methods of the associated API views (e.g.
 import json
 
 from .processing import start_task
+from functools import reduce
 
 
 def rec_hasattr(obj, attr):

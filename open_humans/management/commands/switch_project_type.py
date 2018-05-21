@@ -41,8 +41,8 @@ class Command(BaseCommand):
             direction = ['On-site', 'OAuth2']
 
         proj_parent = DataRequestProject.objects.get(id=options['proj_id'])
-        conf = input('Switching project type for "{}" from {} to {}. Confirm '
-                     '(Yes/No): '.format(proj_old, *direction))
+        conf = eval(input('Switching project type for "{}" from {} to {}. Confirm '
+                     '(Yes/No): '.format(proj_old, *direction)))
         if conf.lower() != 'yes':
             print('Aborting.')
             return

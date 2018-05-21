@@ -79,9 +79,9 @@ class Command(BaseCommand):
                 start_task(user_data.user, options['app'],
                            force=options['force'])
 
-                print '- task was started'
+                print('- task was started')
             else:
-                print '- task was not started (unverified email)'
+                print('- task was not started (unverified email)')
 
             if options['delay']:
                 time.sleep(int(options['delay']))
