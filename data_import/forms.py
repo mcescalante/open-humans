@@ -20,7 +20,7 @@ class ArchiveDataFilesForm(forms.Form):
         raw_ids = self.data.get('data_file_ids', '')
 
         # the HTML form is a comma-delimited string; the API is a list
-        if not isinstance(raw_ids, basestring):
+        if not isinstance(raw_ids, str):
             raw_ids = ','.join(str(raw_id) for raw_id in raw_ids)
 
         data_file_ids = re.split(r'[ ,\r\n]+', raw_ids)

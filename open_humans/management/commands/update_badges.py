@@ -16,8 +16,8 @@ class Command(BaseCommand):
         self.stdout.write('Updating badges')
 
         badge_data = {k: v['badge']
-                      for k, v in personalize_activities_dict(
-                      only_active=False).items()}
+                      for k, v in list(personalize_activities_dict(
+                      only_active=False).items())}
 
         for member in Member.enriched.all():
             self.stdout.write('- {0}'.format(member.user.username))
@@ -26,7 +26,7 @@ class Command(BaseCommand):
 
             # Badges for activities and deeply integrated studies, e.g. PGP,
             # RunKeeper
-            for label, _ in member.connections.items():
+            for label, _ in list(member.connections.items()):
                 member.badges.append(badge_data[label])
 
             project_memberships = (member.datarequestprojectmember_set

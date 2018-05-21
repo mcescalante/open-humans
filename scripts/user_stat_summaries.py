@@ -39,8 +39,8 @@ def main():
             continue
 
     # Make this robust to analyzing past data dumps that didn't have all sources.
-    studies = [s for s in STUDIES if s in data[data.keys()[0]]]
-    sources = [s for s in SOURCES if s in data[data.keys()[0]]]
+    studies = [s for s in STUDIES if s in data[list(data.keys())[0]]]
+    sources = [s for s in SOURCES if s in data[list(data.keys())[0]]]
 
     study_twoplus_counts = counts_for_sourcelist_and_threshold(studies, 2)
 

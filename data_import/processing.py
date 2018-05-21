@@ -1,5 +1,5 @@
 import logging
-import urlparse
+import urllib.parse
 
 import requests
 
@@ -68,7 +68,7 @@ def start_task(user, source, force=False):
     Send a task to data-processing.
     """
     task_url = '{}/'.format(
-        urlparse.urljoin(settings.DATA_PROCESSING_URL, source))
+        urllib.parse.urljoin(settings.DATA_PROCESSING_URL, source))
 
     try:
         task_req = requests.post(

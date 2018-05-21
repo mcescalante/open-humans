@@ -35,7 +35,7 @@ def start_processing_cb(email_address, **kwargs):
     A signal that sends all of a user's connections to data-processing when
     they first verify their email.
     """
-    for source, _ in email_address.user.member.connections.items():
+    for source, _ in list(email_address.user.member.connections.items()):
         start_task(email_address.user, source)
 
 

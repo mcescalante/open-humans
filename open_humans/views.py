@@ -183,7 +183,7 @@ class AuthorizationView(BaseOAuth2AuthorizationView):
 
             return 'primary'
 
-        zipped_scopes = zip(context['scopes'], context['scopes_descriptions'])
+        zipped_scopes = list(zip(context['scopes'], context['scopes_descriptions']))
         zipped_scopes.sort(key=scope_key)
 
         context['scopes'] = [(scope, description, scope_class(scope))
